@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Casal Dos Mimos | Big Maura's & Rainha dos Mimos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mimos: '#800020',        /* Vinho / Burgundy */
+                        'mimos-dark': '#560015',
+                        'mimos-light': '#fff5f6',
+                        'mimos-soft': '#fce4e8',
+                        'mimos-gold': '#d4af37'   /* Dourado Accent */
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; -webkit-tap-highlight-color: transparent; }
+        .scroll-clean::-webkit-scrollbar { display: none; }
+        .scroll-clean { -ms-overflow-style: none; scrollbar-width: none; }
+        .img-fade { transition: opacity 0.3s ease-in-out, transform 0.3s ease-out; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-mimos selection:text-white pb-24 md:pb-0">
+
+    <!-- NAV BAR COM LOGOTIPO -->
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-mimos-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#inicio" class="flex items-center gap-3">
+                    <img src="img/logo.jpeg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150/800020/FFFFFF?text=Casal+Mimos';" alt="Casal Dos Mimos Logo" class="h-12 w-12 object-cover rounded-full border-2 border-mimos-gold p-0.5 shadow-sm">
+                    <div class="flex flex-col">
+                        <span class="text-xl sm:text-2xl font-extrabold text-mimos tracking-tight uppercase">Casal Dos Mimos</span>
+                        <span class="text-[9px] sm:text-[10px] text-mimos-gold uppercase tracking-widest font-bold italic -mt-1">Big Maura's & Rainha dos Mimos</span>
+                    </div>
+                </a>
+                
+                <nav class="hidden md:flex space-x-8 font-semibold text-sm text-gray-700">
+                    <a href="#inicio" class="hover:text-mimos transition duration-200">Início</a>
+                    <a href="#promocoes" class="hover:text-mimos transition duration-200 text-mimos font-bold">Destaques</a>
+                    <a href="#cardapio" class="hover:text-mimos transition duration-200">Catálogo</a>
+                    <a href="#galeria" class="hover:text-mimos transition duration-200">Galeria</a>
+                    <a href="#calculadora" class="hover:text-mimos transition duration-200">Calculadora</a>
+                    <a href="#contacto-secao" class="hover:text-mimos transition duration-200">Contacto</a>
+                </nav>
+
+                <button onclick="toggleCarrinho()" class="relative bg-mimos-light hover:bg-mimos-soft text-mimos px-3.5 py-2.5 rounded-xl transition flex items-center gap-2 font-semibold text-sm border border-mimos-soft">
+                    <i class="fa-solid fa-gift text-mimos text-lg"></i>
+                    <span class="hidden sm:inline">Meu Pedido</span>
+                    <span id="cart-count-header" class="bg-mimos text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative text-white min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-r from-mimos to-mimos-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-12 md:py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-5 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 text-mimos-gold border border-mimos-gold/40 px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-sm">
+                        <i class="fa-solid fa-heart text-red-400"></i> Bolos, Pizzas, Salgados & Cabazes
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">Casal Dos Mimos</h1>
+                    <p class="text-mimos-gold text-lg sm:text-2xl font-medium italic">Bolos que encantam, momentos que ficam!</p>
+                    <p class="text-white/90 text-xs sm:text-base leading-relaxed max-w-lg mx-auto md:mx-0">
+                        Bolos frescos e deliciosos, pizzas bem recheadas, salgados crocantes e cabazes cheios de carinho por um preço sem preconceito!
+                    </p>
+                    <div class="pt-3 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <a href="#promocoes" class="bg-mimos-gold hover:bg-amber-500 text-mimos-dark font-extrabold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-fire"></i> Ver Destaques
+                        </a>
+                        <a href="#cardapio" class="bg-white hover:bg-mimos-light text-mimos font-extrabold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                            Ver Catálogo Completo <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center md:justify-end">
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-mimos-gold/30 group">
+                        <img src="img/logo.jpeg" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Casal Dos Mimos Especialidades" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-zoom-in">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1º SEÇÃO: DESTAQUES / OFERTAS ESPECIAS -->
+    <section id="promocoes" class="bg-gradient-to-b from-mimos-light to-white py-12 border-b border-mimos-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="bg-mimos text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block border border-mimos-gold">
+                    <i class="fa-solid fa-star mr-1 text-mimos-gold"></i> Mais Pedidos da Casa
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-mimos tracking-tight">Especiais Casal dos Mimos</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Sabores irresistíveis preparados para surpreender quem você ama</p>
+                <div class="w-16 h-1 bg-mimos mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" id="lista-promocoes">
+                <!-- PROMO 1: BOLO DE CHOCOLATE TAMANHO 20 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-mimos transition-all duration-300 flex flex-col justify-between relative group transform hover:-translate-y-1">
+                    <div class="absolute top-3 left-3 bg-mimos text-mimos-gold text-[11px] font-black px-3.5 py-1 rounded-full uppercase tracking-wider z-20 shadow-md flex items-center gap-1 border border-mimos-gold">
+                        <i class="fa-solid fa-crown"></i> Sucesso de Vendas
+                    </div>
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/9] bg-gray-100 group/img">
+                            <img id="img-promo-1" src="img/bolocase1.jpeg" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Bolo de Chocolate Tamanho 20" class="w-full h-full object-cover img-fade cursor-zoom-in">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-mimos transition-colors">Bolo de Chocolate (Tamanho 20)</h3>
+                            <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">Massa fofinha de chocolate com cobertura vulcânica cremosa e granulado gourmet. Perfeito para comemorações!</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-2">
+                        <div>
+                            <span class="text-xs text-gray-400 line-through block">1000 Mt</span>
+                            <span class="text-2xl font-extrabold text-mimos">850 Mt</span>
+                        </div>
+                        <button onclick="adicionarPromoAoCarrinho('Bolo de Chocolate (Tamanho 20)', 850, 'Promocional Destaque')" class="bg-mimos hover:bg-mimos-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Encomendar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROMO 2: CABAZ DE MIMOS COMPLETO -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border-2 border-mimos-gold transition-all duration-300 flex flex-col justify-between relative group transform hover:-translate-y-1">
+                    <div class="absolute top-3 left-3 bg-mimos-gold text-mimos-dark text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider z-20 shadow-md">
+                        <i class="fa-solid fa-gift"></i> Mimo Perfeito
+                    </div>
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/9] bg-gray-100 group/img">
+                            <img id="img-promo-2" src="img/bandeja2.jpeg" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Cabaz de Mimos Especial" class="w-full h-full object-cover img-fade cursor-zoom-in">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-mimos transition-colors">Cabaz Surpresa de Mimos</h3>
+                            <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">Inclui vinho/espumante, frutas frescas selecionadas, salgados artesanais, doces e cartão personalizado.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-2">
+                        <div>
+                            <span class="text-xs text-gray-400 block">A partir de</span>
+                            <span class="text-2xl font-extrabold text-mimos">2.500 Mt</span>
+                        </div>
+                        <button onclick="adicionarPromoAoCarrinho('Cabaz Surpresa de Mimos', 1500, 'Especial Aniversário/Amor')" class="bg-mimos hover:bg-mimos-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Encomendar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2º SEÇÃO: CARDÁPIO GERAL -->
+    <section id="cardapio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center space-y-2 mb-8">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-mimos tracking-tight">Catálogo de Produtos</h2>
+            <p class="text-gray-500 text-xs sm:text-sm">Escolha seus mimos preferidos e personalize o seu pedido</p>
+            <div class="w-16 h-1 bg-mimos mx-auto rounded-full mt-2"></div>
+        </div>
+
+        <div class="max-w-lg mx-auto mb-6">
+            <div class="relative flex items-center bg-white shadow-sm border border-gray-200 rounded-2xl overflow-hidden focus-within:border-mimos focus-within:ring-2 focus-within:ring-mimos/20 transition-all">
+                <span class="pl-4 text-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" id="campo-busca" oninput="filtrarProdutos()" placeholder="Buscar bolo, cabaz, pizza, salgado..." class="w-full pl-3 pr-4 py-3 text-sm bg-transparent outline-none text-gray-700">
+            </div>
+        </div>
+
+        <div class="w-full border-b border-gray-200 mb-8 overflow-hidden">
+            <div class="flex space-x-2 overflow-x-auto pb-3 scroll-clean justify-start md:justify-center" id="container-categorias">
+                <button onclick="filtrarCategoria('todos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-mimos text-white text-xs sm:text-sm transition shadow-sm">Todos</button>
+                <button onclick="filtrarCategoria('bolos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-mimos text-xs sm:text-sm transition">Bolos Decorados</button>
+                <button onclick="filtrarCategoria('cabazes', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-mimos text-xs sm:text-sm transition">Cabazes de Mimos</button>
+                <button onclick="filtrarCategoria('salgados', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-mimos text-xs sm:text-sm transition">Salgados & Pizzas</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="lista-produtos"></div>
+    </section>
+
+    <!-- GALERIA DE FOTOS -->
+    <section id="galeria" class="bg-gradient-to-b from-white to-mimos-light py-12 border-t border-mimos-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="bg-mimos text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-camera mr-1"></i> Momentos Mimos
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-mimos tracking-tight">Galeria dos Nossos Mimos</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Confira alguns dos bolos, cabazes e momentos especiais entregues por nós</p>
+                <div class="w-16 h-1 bg-mimos mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div onclick="abrirZoom('img/boque+bolo.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer border border-mimos-soft">
+                    <img src="img/boque+bolo.jpeg" onerror="tratarErroImagem(this)" alt="Casal dos Mimos 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-mimos/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('img/bolo3andares.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer border border-mimos-soft">
+                    <img src="img/bolo3andares.jpeg" onerror="tratarErroImagem(this)" alt="Casal dos Mimos 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-mimos/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('img/bolaniver.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer border border-mimos-soft">
+                    <img src="img/bolaniver.jpeg" onerror="tratarErroImagem(this)" alt="Casal dos Mimos 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-mimos/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('img/bandeja.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer border border-mimos-soft">
+                    <img src="img/bandeja.jpeg" onerror="tratarErroImagem(this)" alt="Casal dos Mimos 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-mimos/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE EVENTOS -->
+    <section id="calculadora" class="bg-gray-50 py-12 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="text-xs font-bold text-mimos uppercase tracking-wider">Simulador Rápido</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-mimos tracking-tight">Calculadora de Festa & Mimos</h2>
+                <p class="text-gray-500 text-xs sm:text-sm">Calcule a estimativa de bolo, salgados e pizzas ideais para a sua comemoração</p>
+                <div class="w-16 h-1 bg-mimos mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-mimos-soft space-y-6">
+                <form id="formCalculadora" onsubmit="calcularEvento(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="calcPessoas" class="block text-xs font-bold text-mimos uppercase tracking-wider mb-2">Nº de Convidados *</label>
+                        <input type="number" id="calcPessoas" min="1" placeholder="Ex: 20" required class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-mimos">
+                    </div>
+
+                    <div>
+                        <label for="calcTipo" class="block text-xs font-bold text-mimos uppercase tracking-wider mb-2">Tipo de Festa *</label>
+                        <select id="calcTipo" required class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-mimos">
+                            <option value="Aniversário">Aniversário</option>
+                            <option value="Surpresa Romântica">Surpresa Romântica</option>
+                            <option value="Festa Infantil">Festa Infantil</option>
+                            <option value="Confraternização">Confraternização</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2 pt-2">
+                        <button type="submit" class="w-full bg-mimos hover:bg-mimos-dark text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                            <i class="fa-solid fa-wand-magic-sparkles text-mimos-gold"></i> Calcular Estimativa
+                        </button>
+                    </div>
+                </form>
+
+                <div id="resultadoCalculadora" class="hidden bg-mimos-light p-5 rounded-2xl border border-mimos-soft space-y-4">
+                    <h3 class="font-bold text-mimos text-sm sm:text-base border-b border-mimos-soft pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-check text-mimos-gold"></i> Recomendação Casal dos Mimos:
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                        <div class="bg-white p-3 rounded-xl border border-mimos-soft">
+                            <strong class="text-gray-800 block">🥐 Salgados Sugeridos:</strong>
+                            <span id="resSalgados" class="text-mimos font-bold">0 dúzias</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-mimos-soft">
+                            <strong class="text-gray-800 block">🎂 Bolo Sugerido:</strong>
+                            <span id="resBolo" class="text-mimos font-bold">Tamanho 20</span>
+                        </div>
+                    </div>
+
+                    <button onclick="enviarCalculoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs uppercase tracking-wide">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Pedir Orçamento no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO EXCLUSIVA DE CONTACTO & PAGAMENTO -->
+    <section id="contacto-secao" class="bg-gradient-to-b from-white to-mimos-light/50 py-12 border-t border-mimos-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-10">
+                <span class="bg-mimos text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block border border-mimos-gold">
+                    <i class="fa-solid fa-paper-plane mr-1 text-mimos-gold"></i> Fala Connosco
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-mimos tracking-tight">Contactos & Localização</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Estamos prontos para atendeu-lo com todo carinho</p>
+                <div class="w-16 h-1 bg-mimos mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
+                <!-- TELEFONE / WHATSAPP -->
+                <div class="bg-white p-6 rounded-2xl border border-mimos-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-mimos-light rounded-full flex items-center justify-center mx-auto text-mimos text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Telefones & WhatsApp</h3>
+                    <p class="text-xs text-gray-500">Atendimento rápido para encomendas</p>
+                    <div class="space-y-1">
+                        <a href="https://wa.me/258849311226" target="_blank" class="block font-extrabold text-mimos hover:text-mimos-dark text-sm tracking-wide">
+                            WhatsApp: +258 84 931 1226
+                        </a>
+                        <p class="text-xs text-gray-700 font-semibold">Chamadas: 86 991 1226 / 84 733 1001</p>
+                    </div>
+                </div>
+
+                <!-- PAGAMENTO M-PESA -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-mimos shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto text-red-600 text-xl font-black">
+                        M
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Pagamento M-Pesa</h3>
+                    <p class="text-xs text-gray-500">Confirmação de encomenda rápida</p>
+                    <div class="bg-mimos-light p-2.5 rounded-xl text-xs space-y-1 border border-mimos-soft">
+                        <p class="font-extrabold text-mimos text-sm">84 931 1226</p>
+                        <p class="font-bold text-gray-700">Casal Dos Mimos / Big Maura's</p>
+                    </div>
+                </div>
+
+                <!-- LOCALIZAÇÃO -->
+                <div class="bg-white p-6 rounded-2xl border border-mimos-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-mimos-light rounded-full flex items-center justify-center mx-auto text-mimos text-xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Nossa Localização</h3>
+                    <p class="text-xs text-gray-500">Serviço de entrega com custo adicional</p>
+                    <span class="inline-block font-extrabold text-gray-800 text-xs leading-tight">
+                        Av. Julius Nyerere, antiga ShopRite de Magonine, rua da Escola Secundária de Laulane, em frente à 14ª Esquadra
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE ZOOM / LIGHTBOX -->
+    <div id="modalZoom" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md cursor-zoom-out" onclick="fecharZoom()">
+        <button onclick="fecharZoom()" class="absolute top-5 right-5 text-white/80 hover:text-white text-3xl z-50 p-2"><i class="fa-solid fa-xmark"></i></button>
+        <img id="imgModalZoom" src="" alt="Imagem Ampliada" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl transition-transform duration-300">
+    </div>
+
+    <!-- MODAL DE PERSONALIZAÇÃO -->
+    <div id="modalOpcoes" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all flex flex-col max-h-[90vh]">
+            <div class="relative bg-mimos text-white p-4 sm:p-5 flex items-center justify-between">
+                <h3 id="modalOpcoesTitulo" class="font-bold text-base sm:text-lg text-white">Personalizar Mimo</h3>
+                <button onclick="fecharModalOpcoes()" class="text-white/80 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1" id="modalOpcoesCorpo"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-3">
+                <div>
+                    <span class="text-[10px] sm:text-xs text-gray-400 block">Preço Total</span>
+                    <span id="modalOpcoesPreco" class="text-lg sm:text-xl font-extrabold text-mimos">0 Mt</span>
+                </div>
+                <button onclick="confirmarAdicaoCarrinho()" class="bg-mimos hover:bg-mimos-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRAWER / MODAL DO CARRINHO -->
+    <div id="carrinho-modal" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity duration-300 flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
+            <div class="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between bg-mimos text-white">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-basket-shopping text-mimos-gold text-xl"></i>
+                    <h3 class="font-bold text-base sm:text-lg">Seu Pedido de Mimos</h3>
+                </div>
+                <button onclick="toggleCarrinho()" class="text-white/80 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-3" id="itens-carrinho"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 space-y-4">
+                <div class="bg-mimos-light/80 p-3 rounded-xl border border-mimos-soft text-xs space-y-1">
+                    <span class="block font-bold text-mimos uppercase tracking-wider">💳 Pagamento M-Pesa:</span>
+                    <p class="text-gray-700"><strong>Número:</strong> 84 931 1226 | <strong>Nome:</strong> Casal Dos Mimos</p>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-2">
+                    <span class="block text-xs font-bold text-mimos uppercase tracking-wider">Forma de Entrega:</span>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-gray-50 hover:border-mimos">
+                            <input type="radio" name="opcaoEntrega" value="retirada" checked onchange="atualizarTotalCarrinho()" class="accent-mimos">
+                            <span>Levantar no Local</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-gray-50 hover:border-mimos">
+                            <input type="radio" name="opcaoEntrega" value="delivery" onchange="atualizarTotalCarrinho()" class="accent-mimos">
+                            <span>Txopela / Delivery</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-carrinho">0 Mt</span>
+                    </div>
+                    <div class="flex items-center justify-between text-base font-bold text-gray-800 pt-1 border-t border-gray-200">
+                        <span>Total Final:</span>
+                        <span id="total-carrinho" class="text-xl text-mimos font-extrabold">0 Mt</span>
+                    </div>
+                </div>
+
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Encomenda no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://wa.me/258849311226?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informA%C3%A7%C3%B5es%20sobre%20os%20vossos%20mimos." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3.5 md:px-5 md:py-3 rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2 group hover:scale-105 active:scale-95 border-2 border-white"
+       aria-label="Atendimento no WhatsApp">
+        <i class="fa-brands fa-whatsapp text-2xl md:text-2xl"></i>
+        <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">Atendimento Rápido</span>
+    </a>
+
+    <!-- BARRA DE MENU FLUTUANTE MOBILE -->
+    <nav class="fixed bottom-3 left-4 right-4 z-40 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-mimos-soft p-1.5 md:hidden">
+        <div class="flex justify-around items-center">
+            <a href="#inicio" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-mimos transition text-center">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Início</span>
+            </a>
+            <a href="#promocoes" class="flex flex-col items-center py-1 px-2 text-mimos font-bold transition text-center">
+                <i class="fa-solid fa-star text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Destaques</span>
+            </a>
+            <a href="#cardapio" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-mimos transition text-center">
+                <i class="fa-solid fa-list-check text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Catálogo</span>
+            </a>
+            <button onclick="toggleCarrinho()" class="relative flex flex-col items-center py-1 px-2 text-mimos font-bold transition text-center">
+                <i class="fa-solid fa-basket-shopping text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Pedido</span>
+                <span id="cart-count-float" class="absolute -top-1 -right-1 bg-mimos text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-gradient-to-b from-mimos to-mimos-dark text-white pt-12 pb-16 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div class="space-y-3 flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-3">
+                    <img src="img/logo.jpeg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150/800020/FFFFFF?text=Casal+Mimos';" alt="Casal Dos Mimos Logo Rodapé" class="h-12 w-12 object-cover bg-white rounded-full p-0.5 border-2 border-mimos-gold">
+                    <h3 class="text-2xl font-extrabold tracking-wide text-white uppercase">Casal Dos Mimos</h3>
+                </div>
+                <p class="text-mimos-soft text-xs sm:text-sm leading-relaxed">Big Maura's & Rainha dos Mimos. Bolos que encantam, momentos que ficam!</p>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-mimos-gold tracking-wider">Contactos & Endereço</h4>
+                <p class="text-mimos-soft text-xs sm:text-sm"><i class="fa-solid fa-location-dot mr-2"></i> Av. Julius Nyerere, Magonine/Laulane</p>
+                <p class="text-mimos-soft text-xs sm:text-sm"><i class="fa-solid fa-phone mr-2"></i> WhatsApp: +258 84 931 1226</p>
+                <p class="text-mimos-soft text-xs sm:text-sm"><i class="fa-solid fa-credit-card mr-2"></i> M-Pesa: 84 931 1226 (Casal Dos Mimos)</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-mimos-gold tracking-wider">Redes Sociais</h4>
+                <div class="flex justify-center md:justify-start gap-4 text-2xl pt-1">
+                    <a href="https://wa.me/258849311226" target="_blank" class="hover:text-mimos-gold transition text-white"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com" target="_blank" class="hover:text-mimos-gold transition text-white"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-mimos-gold transition text-white"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-white/20 my-8 max-w-7xl mx-auto">
+        <div class="text-center text-xs text-mimos-soft">&copy; 2026 Casal Dos Mimos. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- CARREGAMENTO DO SCRIPT EXTERNO -->
+    <script src="script.js"></script>
+</body>
+</html>
