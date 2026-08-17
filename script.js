@@ -88,20 +88,12 @@ const produtosCasalMimos = [
         }
     },
     {
-        id: 10,
-        nome: "Bolo Floresta Negra (T18)",
-        categoria: "bolos",
-        descricao: "Clássico bolo Floresta Negra tamanho 18 com raspas de chocolate e recheio especial.",
-        precoBase: 750,
-        imagens: ["imagens/florestanegra.jpeg"]
-    },
-    {
         id: 11,
         nome: "Bolo Caseiro",
         categoria: "bolos",
         descricao: "Bolo caseiro quentinho, macio e fofinho, feito com receita tradicional.",
         precoBase: 850,
-        imagens: ["imagens/bolocaseiro.jpeg"]
+        imagens: ["img/bolocase.jpeg"]
     },
     {
         id: 12,
